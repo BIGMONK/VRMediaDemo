@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'vrmediademo'
+            keyPassword '123456'
+            storeFile file('F:/djf/newfolder/demo/VRMedia/2/VRMediaDemo/VRMediaDemo/app/vrmediademo.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        multiDexEnabled = true
+        applicationId "com.opengles2demo.opengles2demo"
+        minSdkVersion 17
+        targetSdkVersion 22
+        versionCode 5
+        versionName "VRMediaCompare.1.2"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            versionNameSuffix 'r'
+        }
+        debug {
+            versionNameSuffix 'd'
+        }
+    }
+    //打包重命名
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.each {
+                output ->
+                    //release版本重命名
+                    if (variant.buildType.name.equals('release')) {
+                        output.outputFile = new File(output.outputFile.parent,
+                                variant.versionName
+                                        + "-" + variant.versionCode
+                                        + ".apk");
+                    } else if (variant.buildType.name.equals('debug')) {
+                        output.outputFile = new File(output.outputFile.parent,
+                                variant.versionName
+                                        + "-" + variant.versionCode
+//                                        + "_v" + variant.versionName.substring(variant.versionName.lastIndexOf(variant.versionCode + ""))
+                                        + ".apk");
+                    }
+            }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    compile 'com.google.android.exoplayer:exoplayer:r2.4.0'
+    compile 'com.orhanobut:logger:2.1.1'
+}

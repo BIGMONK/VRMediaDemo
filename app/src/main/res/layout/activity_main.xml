@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/surfaceContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.ut.vrmedia.view.VRTextureView
+            android:id="@+id/videoSurfaceView"
+            android:layout_width="1350px"
+            android:layout_height="0px"
+            android:layout_weight="1"/>
+        <VideoView
+            android:id="@+id/vv"
+            android:layout_width="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
