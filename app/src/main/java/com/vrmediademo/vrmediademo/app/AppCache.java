@@ -33,11 +33,15 @@ public class AppCache {
     }
 
     public static void init(Application application) {
+
         getInstance().onInit(application);
     }
 
     private void onInit(Application application) {
         mContext = application.getApplicationContext();
+
+        CrashHandler.getInstance().init();
+
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(true)
                 .tag(VersionUtils.getAppName(mContext))
@@ -49,8 +53,6 @@ public class AppCache {
                 return true;
             }
         });
-
-        CrashHandler.getInstance().init();
         application.registerActivityLifecycleCallbacks(new ActivityLifecycle());
     }
 

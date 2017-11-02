@@ -93,7 +93,7 @@ public class LiuFragment extends Fragment implements TextureView.SurfaceTextureL
         mVRMedia = new VRPlayer(getActivity());
         mVRMedia.setOnPreparedListener(this);
         mVRMedia.setOnCompletionListener(this);
-        mPlaybackRate = getArguments().getFloat("speed");
+        mPlaybackRate = getArguments().getFloat("speed",1);
         speedTextview.setText("播放文件："+filepath+"  播放速度："+mPlaybackRate);
         return mRootView;
     }

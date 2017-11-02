@@ -25,17 +25,16 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         filepath = getIntent().getStringExtra("file");
 
-        Fragment compareFragment=new FragmentFactory().creatFragment(getIntent().getIntExtra("type",0));
-
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-
-        transaction.replace(R.id.fragment, compareFragment);
-        transaction.commit();
 
         Bundle bundle=new Bundle();
         bundle.putString("file",filepath);
+        Fragment compareFragment=new FragmentFactory().creatFragment(getIntent().getIntExtra("type",0));
         compareFragment.setArguments(bundle);
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.fragment, compareFragment);
+        transaction.commit();
 
 
     }

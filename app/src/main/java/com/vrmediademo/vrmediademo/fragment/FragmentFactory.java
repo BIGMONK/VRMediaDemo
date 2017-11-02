@@ -16,9 +16,8 @@ public class FragmentFactory {
                 return new LiuFragment();
             case 2:
                 return new OriFragment();
-            case 6:
+            default:
                 return new ExoPlayerFragment();
         }
-        return null;
     }
 }

@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:resize_mode="fill"
+        app:surface_type="texture_view"
         app:use_controller="true"/>
 
     <LinearLayout
@@ -27,8 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="4dp"
-            android:textColor="@color/colorAccent"
             android:paddingRight="4dp"
+            android:textColor="@color/colorAccent"
             android:textSize="10sp"
             tools:ignore="SmallSp"/>
 
@@ -58,25 +59,31 @@
                 android:id="@+id/decrease_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:focusable="true"
                 android:text="-"/>
-
-
-            <TextView
-                android:id="@+id/speed_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:text="1"/>
             <Button
                 android:id="@+id/increase_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:focusable="true"
                 android:text="+"/>
+            <TextView
+                android:id="@+id/speed_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@color/colorAccent"/>
             <Button
                 android:id="@+id/start_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:focusable="true"
                 android:text="播放"/>
+            <TextView
+                android:textColor="@color/colorAccent"
+                android:id="@+id/filename_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
 
